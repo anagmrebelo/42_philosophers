@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 00:07:50 by arebelo           #+#    #+#             */
-/*   Updated: 2022/05/28 00:09:06 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:06:35 by anarebelo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "philosophers.h"
 
 _Bool	check_errors(t_params *param, int argc)
 {

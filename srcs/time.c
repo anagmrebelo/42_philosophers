@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:59:15 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/20 14:59:23 by arebelo          ###   ########.fr       */
+/*   Created: 2022/05/12 18:03:56 by arebelo           #+#    #+#             */
+/*   Updated: 2023/02/22 00:06:35 by anarebelo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philosophers.h"
+#include "philosophers.h"
 
-void	*ft_calloc(unsigned long count, size_t size)
+time_t	get_time(t_params *param)
 {
-	void	*ptr;
+	struct timeval	time;
 
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (0);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	while (gettimeofday(&time, NULL))
+	{
+	}
+	return ((time.tv_sec * 1000 + time.tv_usec / 1000) - param->init_time);
 }

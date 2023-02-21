@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   write.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 23:17:12 by arebelo           #+#    #+#             */
-/*   Updated: 2022/05/30 16:03:21 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:06:35 by anarebelo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "philosophers.h"
 
 void	message_display(t_params *param, time_t i, char *str)
 {

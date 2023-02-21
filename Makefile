@@ -1,52 +1,72 @@
-SRCS		= 	src/utils/ft_atoi.c\
-				src/utils/ft_bzero.c\
-				src/utils/ft_calloc.c\
-				src/creation.c\
-				src/routine.c\
-				src/status.c\
-				src/time.c\
-				src/write.c\
-				src/init.c\
-				src/game_status.c\
-				src/philosophers.c
-			
-SRCS_BONUS	= 	src_bonus/gnl/get_next_line_bonus.c\
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/21 23:58:15 by anarebelo         #+#    #+#              #
+#    Updated: 2023/02/22 00:07:49 by anarebelo        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-OBJS		= ${SRCS:.c=.o}
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
-
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
-
+# NAME
+# **************************************************************************** #
 NAME		= philo
-NAME2		= .filetrack
-HEADER		= includes/philosophers.h
 
-.c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+# FILES
+# **************************************************************************** #
+SRCS		= 	utils/ft_atoi.c\
+				utils/ft_bzero.c\
+				utils/ft_calloc.c\
+				creation.c\
+				routine.c\
+				status.c\
+				time.c\
+				write.c\
+				init.c\
+				game_status.c\
+				philosophers.c
+			
+OBJS			=${addprefix ${OBJS_DIR}, ${SRCS:.c=.o}}
+DEPS			=${addprefix ${OBJS_DIR}, ${SRCS:.c=.d}}
 
+# DIRECTORY
+# **************************************************************************** #
+OBJS_DIR			= objs/
+SRCS_DIR			= srcs/
+
+# LIBRARIES
+# **************************************************************************** #
+INCLUDE				= -I includes
+
+# COMPILATION
+# **************************************************************************** #
+LINK				= gcc
+CC					= gcc -c
+DEPFLAGS			= -MMD -MP
+CFLAGS				= -Wall -Wextra -Werror 
+RM					= rm -rf
+
+# RULES
+# **************************************************************************** #
 all:		${NAME}
 
-${NAME}:	${OBJS} ${HEADER}
-			@${RM} ${OBJS_BONUS}
-			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@
 
-bonus:		${NAME2} 
-
-${NAME2}:	${OBJS_BONUS} ${HEADER}
-			@${RM} ${OBJS}
-			${CC} ${CFLAGS} ${SRCS_BONUS} -o ${NAME}
-			@touch $@
+${NAME}:	${OBJS} 
+			${LINK} ${CFLAGS} $(INCLUDE) ${OBJS} ${LIB} -o ${NAME}
 
 clean:		
-		@${RM} ${OBJS}
-		@${RM} ${OBJS_BONUS}
+		@${RM} ${OBJS_DIR}
 
 fclean:		clean
 		${RM} ${NAME}
-		@${RM} ${NAME2}
 
 re:		fclean all
 
-.PHONY:		all clean fclean re bonus
+ -include ${DEPS}
+
+.PHONY:		all clean fclean re

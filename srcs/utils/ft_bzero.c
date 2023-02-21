@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:53:13 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/20 14:53:18 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:06:50 by anarebelo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philosophers.h"
+#include "philosophers.h"
 
 void	ft_bzero(void *s, size_t n)
 {
